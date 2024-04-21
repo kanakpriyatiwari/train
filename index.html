@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Search</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #d8e7f6;
+      }
+
+      .search-form {
+        background-color: #c7c8fd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-form select,
+      .search-form input[type="date"] {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+
+      .search-form input[type="button"] {
+        width: auto;
+        margin-top: 10px;
+      }
+
+      .result-card {
+        background-color: #c7c8fd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .result-card:hover {
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .result-card h5 {
+        margin-bottom: 10px;
+      }
+
+      .result-card p {
+        margin-bottom: 5px;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="search-form">
+            <h4 class="mb-4">Search Trains</h4>
+            <div class="row align-items-center">
+              <div class="col-sm-4">
+                <label for="from-station" class="form-label"
+                  >From Station:</label
+                >
+                <select class="form-select" name="from_station" id="t1">
+                  <!-- Options here -->
+                  <option value="PNBE">Patna Junction</option>
+                  <option value="KGP">Kharagpur Junction</option>
+                  <option value="GAYA">Gaya Junction</option>
+                  <option value="HWH">Howrah Junction</option>
+                  <option value="NDLS">New Delhi</option>
+                  <option value="CNB">Kanpur Central</option>
+                  <option value="BBS">Bhubaneswar</option>
+                  <option value="YPR">Yesvantpur Junction</option>
+                  <option value="SC">Secunderabad Junction</option>
+                  <option selected value="CSTM">Mumbai CST</option>
+                  <option value="SBC">Bengaluru City</option>
+                  <option value="MAS">Chennai Central</option>
+                  <option value="GWL">Gwalior Junction</option>
+                  <option value="ADI">Ahmedabad Junction</option>
+                  <option value="JP">Jaipur Junction</option>
+                  <option value="ASN">Asansol Junction</option>
+                  <option value="GKP">Gorakhpur Junction</option>
+                  <option value="JAT">Jammu Tawi</option>
+                  <option value="BZA">Vijayawada Junction</option>
+                  <option value="BSB">Varanasi Junction</option>
+                  <option value="DBRG">Dibrugarh</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="to-station" class="form-label">To Station:</label>
+                <select class="form-select" name="to_station" id="t2">
+                  <!-- Options here -->
+                  <option value="PNBE">Patna Junction</option>
+                  <option value="KGP">Kharagpur Junction</option>
+                  <option value="GAYA">Gaya Junction</option>
+                  <option value="HWH">Howrah Junction</option>
+                  <option selected value="NDLS">New Delhi</option>
+                  <option value="CNB">Kanpur Central</option>
+                  <option value="BBS">Bhubaneswar</option>
+                  <option value="YPR">Yesvantpur Junction</option>
+                  <option value="SC">Secunderabad Junction</option>
+                  <option value="CSTM">Mumbai CST</option>
+                  <option value="SBC">Bengaluru City</option>
+                  <option value="MAS">Chennai Central</option>
+                  <option value="GWL">Gwalior Junction</option>
+                  <option value="ADI">Ahmedabad Junction</option>
+                  <option value="JP">Jaipur Junction</option>
+                  <option value="ASN">Asansol Junction</option>
+                  <option value="GKP">Gorakhpur Junction</option>
+                  <option value="JAT">Jammu Tawi</option>
+                  <option value="BZA">Vijayawada Junction</option>
+                  <option value="BSB">Varanasi Junction</option>
+                  <option value="DBRG">Dibrugarh</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="date" class="form-label">Date of Journey:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="date_of_journey"
+                  id="date"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <input
+                type="button"
+                value="Search Train"
+                class="btn btn-primary"
+                id="b1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5" id="result-section">
+        <!-- Results will be displayed here -->
+      </div>
+    </section>
+
+    <script src="../js/jquery.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        let key = "0cca7eacf6msh83aa4198febf8aap1e2b30jsn77b24997ffc5";
+
+        $("#b1").click(function () {
+          let fromstn = $("#t1").val();
+          let tostn = $("#t2").val();
+          let dated = $("#date").val();
+
+          const settings = {
+            async: true,
+            crossDomain: true,
+            url:
+              "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=" +
+              fromstn +
+              "&toStationCode=" +
+              tostn +
+              "&dateOfJourney=" +
+              dated,
+            method: "GET",
+            headers: {
+              "X-RapidAPI-Key": key,
+              "X-RapidAPI-Host": "irctc1.p.rapidapi.com",
+            },
+          };
+
+          $.ajax(settings).done(function (response) {
+            let resultHtml = "";
+            $.each(response.data, function (i, v) {
+              resultHtml += `
+                            <div class="col-md-3">
+                                <div class="result-card">
+                                    <h5>${v.train_name}</h5>
+                                    <p><strong>Train Number:</strong> ${v.train_number}</p>
+                                    <p><strong>Source:</strong> ${v.train_src}</p>
+                                    <p><strong>Destination:</strong> ${v.train_dstn}</p>
+                                    <p><strong>Date of Journey:</strong> ${v.train_date}</p>
+                                    <p><strong>Duration:</strong> ${v.duration}</p>
+                                    <p><strong>Starting Time:</strong> ${v.from_sta}</p>
+                                    <p><strong>Class Type:</strong> ${v.class_type}</p>
+                                </div>
+                            </div>`;
+            });
+            $("#result-section").html(resultHtml);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
